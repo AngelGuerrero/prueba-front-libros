@@ -48,7 +48,7 @@
       </router-link>
       <a
         v-else
-        @click="logout"
+        @click="onLogout"
         class="
           dev
           no-underline
@@ -83,7 +83,14 @@ export default {
 
   computed: mapGetters('authModule', ['isAuthenticated']),
 
-  methods: mapActions('authModule', ['logout'])
+  methods: {
+    ...mapActions('authModule', ['logout']),
+
+    onLogout () {
+      this.logout()
+      this.$router.push({ name: 'Login' }).catch(_ => ({}))
+    }
+  }
 }
 </script>
 

@@ -1,6 +1,13 @@
 <template>
-  <div v-show="isThereBooks" class="dev px-3 md:px-16">
-    <h1 class="h-2">Listado de libros</h1>
+  <div class="dev px-3 md:px-16">
+    <h1 class="text-gray-700">Listado de libros</h1>
+
+    <div
+      v-show="!isThereBooks"
+      class="text-center border-solid rounded-xl border-gray-600 bg-white shadow-lg"
+    >
+      <h1 class="text-lg text-gray-700">No hay libros registrados de momento</h1>
+    </div>
   </div>
 </template>
 
@@ -26,7 +33,7 @@ export default {
     async submit () {
       const { error, message } = await this.getBooksAction()
 
-      this.$notify(error, 'Listado de libros', message, false)
+      if (error) this.$notify(error, 'Listado de libros', message, false)
     }
   }
 }

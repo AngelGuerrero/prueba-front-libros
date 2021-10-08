@@ -58,6 +58,8 @@ export default {
       const { error, message } = await this.login(this.user)
 
       this.$notify(error, 'Inicio de sesión', message)
+
+      this.$router.push({ name: 'Home' }).catch(_ => ({}))
     }
   }
 }
