@@ -1,0 +1,82 @@
+// 
+//  ██████╗ ██████╗ ██╗      ██████╗ ██████╗ ███████╗███████╗
+// ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗██╔════╝██╔════╝
+// ██║     ██║   ██║██║     ██║   ██║██████╔╝█████╗  ███████╗
+// ██║     ██║   ██║██║     ██║   ██║██╔══██╗██╔══╝  ╚════██║
+// ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║███████╗███████║
+//  ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+// 
+$dark: #1a1c2b;
+$light: lighten($dark, 30);
+$yellow: #ffd500;
+$pink: #ff6392;
+$darkPurple: #231942;
+$blue: rgb(17, 28, 173);
+
+
+//  ██████╗ ███████╗███╗   ██╗███████╗██████╗  █████╗ ██╗     
+// ██╔════╝ ██╔════╝████╗  ██║██╔════╝██╔══██╗██╔══██╗██║     
+// ██║  ███╗█████╗  ██╔██╗ ██║█████╗  ██████╔╝███████║██║     
+// ██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗██╔══██║██║     
+// ╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║██║  ██║███████╗
+//  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.dev {
+  // border: 1px solid tomato;
+}
+
+//
+// Estilos para el scroll
+//
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: $dark;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: $yellow;
+}
+
+#app {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  height: 70px;
+}
+
+.main {
+  height: 100%;
+  background-color: rgba(235, 238, 247, 0.795);
+}
+
+.footer {
+  min-height: 50px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+}
