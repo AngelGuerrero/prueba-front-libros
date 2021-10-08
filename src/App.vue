@@ -7,6 +7,7 @@
 
     <!-- Main view -->
     <main class="dev main">
+      <XNotification />
       <router-view />
     </main>
 
@@ -18,17 +19,19 @@
 </template>
 
 <script>
+import XNotification from '@/components/notification/XNotification'
 import XNavbar from '@/components/shared/XNavbar'
 import XFooter from '@/components/shared/XFooter'
 
 export default {
   components: {
     XNavbar,
-    XFooter
+    XFooter,
+    XNotification
   }
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/_main.scss';
+@import "@/assets/scss/_main.scss";
 </style>

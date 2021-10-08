@@ -15,6 +15,7 @@ module.exports = {
     'borderColor',
     'textDecoration',
     'cursor',
+    'boxShadow',
     // Flex
     'flex',
     'flexDirection',

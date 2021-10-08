@@ -1,0 +1,7 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "arrowParens": "avoid",
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 100
+}

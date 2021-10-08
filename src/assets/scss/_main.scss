@@ -1,23 +1,23 @@
-// 
+//
 //  ██████╗ ██████╗ ██╗      ██████╗ ██████╗ ███████╗███████╗
 // ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗██╔════╝██╔════╝
 // ██║     ██║   ██║██║     ██║   ██║██████╔╝█████╗  ███████╗
 // ██║     ██║   ██║██║     ██║   ██║██╔══██╗██╔══╝  ╚════██║
 // ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║███████╗███████║
 //  ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
-// 
+//
 $dark: #1a1c2b;
 $light: lighten($dark, 30);
 $yellow: #ffd500;
 $pink: #ff6392;
 $darkPurple: #231942;
 $blue: rgb(17, 28, 173);
+$green: rgb(48, 173, 17);
 
-
-//  ██████╗ ███████╗███╗   ██╗███████╗██████╗  █████╗ ██╗     
-// ██╔════╝ ██╔════╝████╗  ██║██╔════╝██╔══██╗██╔══██╗██║     
-// ██║  ███╗█████╗  ██╔██╗ ██║█████╗  ██████╔╝███████║██║     
-// ██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗██╔══██║██║     
+//  ██████╗ ███████╗███╗   ██╗███████╗██████╗  █████╗ ██╗
+// ██╔════╝ ██╔════╝████╗  ██║██╔════╝██╔══██╗██╔══██╗██║
+// ██║  ███╗█████╗  ██╔██╗ ██║█████╗  ██████╔╝███████║██║
+// ██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗██╔══██║██║
 // ╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║██║  ██║███████╗
 //  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
 *,
@@ -28,7 +28,7 @@ $blue: rgb(17, 28, 173);
 body {
   padding: 0;
   margin: 0;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .dev {
@@ -78,5 +78,38 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.input {
+  width: 100%;
+  font-size: clamp(0.8rem, 1.2rem, 1.5rem);
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid rgb(78, 22, 168);
+  border-radius: 4px;
+}
+
+@mixin btnMixin($bg) {
+  border: 1px solid transparent;
+  padding: 8px;
+  margin: 10px 0;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: $bg;
+  &:hover {
+    background-color: lighten($color: $bg, $amount: 20);
+  }
+  &:active {
+    background-color: lighten($color: $bg, $amount: 50);
+  }
+}
+
+.btn--primary {
+  @include btnMixin($blue);
+}
+
+.btn--success {
+  @include btnMixin($green);
 }

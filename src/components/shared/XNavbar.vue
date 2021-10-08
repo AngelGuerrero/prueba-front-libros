@@ -13,7 +13,8 @@
         v-for="item in menu"
         :key="item.id"
         :to="item.to"
-        class="dev
+        class="
+          dev
           no-underline
           p-3
           flex
@@ -21,30 +22,55 @@
           items-center
           font-bold
           text-yellow-400
-          hover:text-yellow-300"
-        >{{ item.title }}</router-link
+          hover:text-yellow-300
+        "
       >
+        {{ item.title }}
+      </router-link>
 
-      <!-- Iniciar sesión -->
+      <!-- Iniciar y cerrar sesión -->
       <router-link
+        v-if="!isAuthenticated"
         :to="{ name: 'Login' }"
-        class="dev
+        class="
+          dev
           no-underline
           p-3
           flex
           justify-center
           items-center
           font-bold
-          bg-indigo-800
-          text-white
-          hover:text-yellow-300"
-        >Iniciar sesión</router-link
+          text-green-400
+          hover:text-green-300
+        "
       >
+        Iniciar sesión
+      </router-link>
+      <a
+        v-else
+        @click="logout"
+        class="
+          dev
+          no-underline
+          cursor-pointer
+          p-3
+          flex
+          justify-center
+          items-center
+          font-bold
+          text-red-400
+          hover:text-red-300
+        "
+      >
+        Cerrar sesión
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -53,7 +79,11 @@ export default {
         { title: 'Libros', to: '/libros' }
       ]
     }
-  }
+  },
+
+  computed: mapGetters('authModule', ['isAuthenticated']),
+
+  methods: mapActions('authModule', ['logout'])
 }
 </script>
 

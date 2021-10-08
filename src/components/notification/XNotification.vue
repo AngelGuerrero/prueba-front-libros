@@ -1,14 +1,17 @@
 <template>
   <div
-    v-if="this.$store.state.ui.show"
-    class="border-gray-600 border-solid p-3 rounded font-bold"
-    :class="[this.$store.state.ui.error ? 'bg-red-600' : 'bg-green-600']"
+    v-show="ui.show"
+    class="m-3 border-solid border-4 p-3 rounded font-bold shadow-lg"
+    :class="[ui.error ? 'bg-red-200 border-red-600' : 'bg-green-200 border-green-600']"
   >
-    <h3 class="font-bold m-0 p-0 text-white">
-      {{ this.$store.state.ui.title }}
+    <h3
+      class="font-bold m-0 p-0 text-white"
+      :class="[ui.error ? 'text-red-800' : 'text-green-800']"
+    >
+      {{ ui.title }}
     </h3>
-    <p class="text-white">
-      {{ this.$store.state.ui.message }}
+    <p :class="[ui.error ? 'text-red-900' : 'text-green-900']">
+      {{ ui.message }}
     </p>
   </div>
 </template>
@@ -24,27 +27,16 @@ export default {
       deep: true,
       immediate: true,
       handler (val) {
-        if (val.show) {
-          this.hideNotification()
+        if (val.show && val.hideOnTimeOut) {
+          setTimeout(() => this.hideNotification(), 6000)
         }
       }
     }
   },
 
-  created () {
-    const hideNotification = () => this.hideNotification()
-
-    setTimeout(() => hideNotification(), 2000)
-  },
-
   methods: {
     hideNotification () {
-      this.$store.commit('SET_MESSAGE', {
-        show: false,
-        title: '',
-        message: '',
-        error: false
-      })
+      this.$store.dispatch('hideNotificationAction')
     }
   }
 }
