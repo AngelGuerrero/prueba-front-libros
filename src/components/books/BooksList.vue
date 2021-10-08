@@ -1,14 +1,38 @@
 <template>
-  <div class="dev px-3 md:px-16">
-    <h1 class="text-gray-700">Listado de libros</h1>
+  <XContainer>
+    <XTitle>Listado de libros</XTitle>
 
     <div
-      v-show="!isThereBooks"
-      class="text-center border-solid rounded-xl border-gray-600 bg-white shadow-lg"
+      v-if="!isThereBooks"
+      class="text-center border-solid rounded-md border-gray-600 bg-white shadow-lg"
     >
       <h1 class="text-lg text-gray-700">No hay libros registrados de momento</h1>
     </div>
-  </div>
+    <div v-else class="dev bg-white p-3 rounded-2xl shadow-2xl">
+      <vs-table striped>
+        <template #thead>
+          <vs-tr>
+            <vs-th>Título</vs-th>
+            <vs-th>Autor</vs-th>
+            <vs-th>Año</vs-th>
+          </vs-tr>
+        </template>
+        <template #tbody>
+          <vs-tr :key="i" v-for="(tr, i) in getBooks" :data="tr">
+            <vs-td>
+              {{ tr.title }}
+            </vs-td>
+            <vs-td>
+              {{ tr.author }}
+            </vs-td>
+            <vs-td>
+              {{ tr.year }}
+            </vs-td>
+          </vs-tr>
+        </template>
+      </vs-table>
+    </div>
+  </XContainer>
 </template>
 
 <script>
@@ -25,7 +49,7 @@ export default {
     this.$clearNotify()
   },
 
-  computed: mapGetters('booksModule', ['isThereBooks']),
+  computed: mapGetters('booksModule', ['isThereBooks', 'getBooks']),
 
   methods: {
     ...mapActions('booksModule', ['getBooksAction']),

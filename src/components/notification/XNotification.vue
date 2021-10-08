@@ -1,11 +1,11 @@
 <template>
-  <div
+  <XContainer
     v-show="ui.show"
     class="m-3 border-solid border-4 p-3 rounded font-bold shadow-lg"
     :class="[ui.error ? 'bg-red-200 border-red-600' : 'bg-green-200 border-green-600']"
   >
     <h3
-      class="font-bold m-0 p-0 text-white"
+      class="text-2xl font-bold m-0 p-0 text-white"
       :class="[ui.error ? 'text-red-800' : 'text-green-800']"
     >
       {{ ui.title }}
@@ -13,7 +13,7 @@
     <p :class="[ui.error ? 'text-red-900' : 'text-green-900']">
       {{ ui.message }}
     </p>
-  </div>
+  </XContainer>
 </template>
 
 <script>

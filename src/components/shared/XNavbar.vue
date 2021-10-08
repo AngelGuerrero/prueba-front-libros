@@ -76,7 +76,7 @@ export default {
     return {
       menu: [
         { title: 'Inicio', to: '/' },
-        { title: 'Libros', to: '/libros' }
+        { title: 'Agregar libro', to: '/libros' }
       ]
     }
   },

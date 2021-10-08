@@ -1,6 +1,6 @@
 <template>
-  <div class="dev px-3 md:px-16">
-    <h1>Iniciar sesión</h1>
+  <XBoxContainer>
+    <XTitle>Iniciar sesión</XTitle>
 
     <form @submit.prevent="submit">
       <!-- Nombre de usuario -->
@@ -31,7 +31,7 @@
 
       <input type="submit" class="btn--success" value="Iniciar sesión" />
     </form>
-  </div>
+  </XBoxContainer>
 </template>
 
 <script>

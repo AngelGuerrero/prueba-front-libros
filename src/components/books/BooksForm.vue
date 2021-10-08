@@ -1,6 +1,6 @@
 <template>
-  <div class="dev px-3 md:px-16">
-    <h1>Agregar nuevo libro</h1>
+  <XBoxContainer>
+    <XTitle>Agregar nuevo libro</XTitle>
 
     <form @submit.prevent="submit">
       <!-- Título -->
@@ -43,10 +43,12 @@
       </div>
       <input type="submit" class="btn--primary" value="Agregar" />
     </form>
-  </div>
+  </XBoxContainer>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 const book = () => ({
   title: '',
   year: '',
@@ -63,6 +65,16 @@ export default {
   },
 
   methods: {
+    ...mapActions('booksModule', ['createBookAction']),
+
+    async submit () {
+      const { error, message } = await this.createBookAction(this.book)
+
+      this.$notify(error, 'Agregar nuevo libro', message)
+
+      if (!error) this.reset()
+    },
+
     reset () {
       this.book = book()
     }
