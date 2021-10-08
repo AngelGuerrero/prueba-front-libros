@@ -11,7 +11,7 @@ import Resource from '@/api/resource'
 const authResource = new Resource({
   resource: 'api/v1/auth',
   module: 'authModule',
-  withDebug: true
+  withDebug: false
 })
 
 export default {
@@ -41,27 +41,6 @@ export default {
 
   actions: {
     /**
-     * me
-     *
-     * Obtiene la información del usuario actualmente autenticado.
-     *
-     * @param {Number} id Id del usuario para obtener su información
-     *
-     * @returns {Object} Retorna la información del usuario actualmente autenticado.
-     */
-    async me ({ commit }, { id }) {
-      const { error, data, message } = await authResource.get({
-        url: `/me/${id}`
-      })
-
-      const user = error ? null : data.data
-
-      commit('SET_AUTH_USER', user)
-
-      return { error, data: user, message }
-    },
-
-    /**
      * login
      *
      * Manda los siguientes parámetros para el inicio de sesión.
@@ -73,7 +52,7 @@ export default {
       if (getters.isAuthenticated) return { message: 'Sesión iniciada' }
 
       const { error, data, message } = await authResource.post({
-        url: '/login',
+        url: 'login',
         payload: { username, password }
       })
 

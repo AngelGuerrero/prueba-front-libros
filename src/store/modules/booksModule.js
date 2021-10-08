@@ -8,7 +8,7 @@
 import Resource from '@/api/resource'
 
 const booksResource = new Resource({
-  resource: 'api/v1/books/',
+  resource: 'api/v1/books',
   module: 'booksModule',
   withDebug: false
 })
@@ -54,6 +54,30 @@ export default {
       if (error) return { error, message }
 
       return { message }
+    },
+
+    async searchBookAction ({ commit }, input) {
+      const params = {
+        keyword: input
+      }
+
+      const query = Object.keys(params)
+        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+        .join('&')
+
+      const url = 'search?' + query
+
+      const { error, message, data } = await booksResource.post({ url })
+
+      if (error) return { error, message }
+
+      if (data && data.length <= 0) {
+        return { error: true, message: 'Sin resultados' }
+      }
+
+      commit('SET_BOOKS', data)
+
+      return { message, data }
     }
   }
 }

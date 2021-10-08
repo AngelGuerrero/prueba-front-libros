@@ -25,25 +25,25 @@ const baseURL =
 // console.log('baseURL :>> ', baseURL)
 
 /**
- * Función para cerrar sesión.
- * TODO: Guardar el token en localstorage.
  */
-const closeSession = () => {
+const closeSession = async () => {
+  await store.dispatch('authModule/logout')
   router.push('/login')
 }
 
-const handleServiceResponse = response => response
-
-const handleServiceError = error => {
-  console.log('error :>> ', error)
-
-  /* Si el usuario actual no está autenticado */
-  if (error && error.code === 419) {
+const handleServiceResponse = async response => {
+  /**
+   * Si se obtiene un status de 'unauthorized'
+   * entonces se cierra la sesión actual.
+   */
+  if (response && response.status === 401) {
     closeSession()
   }
 
-  return error
+  return await response.json()
 }
+
+const handleServiceError = error => error.json()
 
 const service = async ({ method, url, headers, options = {} }) => {
   const accessToken = store.getters['authModule/getUserToken']
@@ -57,7 +57,6 @@ const service = async ({ method, url, headers, options = {} }) => {
     },
     ...options
   })
-    .then(response => response.json())
     .then(response => handleServiceResponse(response))
     .catch(error => handleServiceError(error))
 }

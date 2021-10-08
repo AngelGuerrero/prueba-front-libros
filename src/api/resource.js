@@ -56,7 +56,7 @@ export default class {
 
       return await service({
         method: 'POST',
-        url: `${this.resource}${url}`,
+        url: `${this.resource}/${url}`,
         options: { body: JSON.stringify(payload) }
       })
     } catch (error) {

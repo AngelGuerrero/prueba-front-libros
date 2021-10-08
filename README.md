@@ -1,24 +1,39 @@
-# galeria
+# Prueba técnica. Consumo de API librería.
 
-## Project setup
+Este repositorio representa una prueba técnica, para el consumo de API Rest.
+
+Cuenta con un pequeño módulo de autenticación y servicios para realizar el correcto consumo de los datos.
+
+## Instalar dependencias
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Crear archivo .env
+
+```
+cp -rv .env.example .env
+```
+
+### Levantar servidor
+
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Compilar para producción
+
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### Lints y corregir archivos
+
 ```
 yarn lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).

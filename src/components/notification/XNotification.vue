@@ -1,7 +1,7 @@
 <template>
   <XContainer
     v-show="ui.show"
-    class="m-3 border-solid border-4 p-3 rounded font-bold shadow-lg"
+    class="my-5 border-solid border-4 py-3 px-10 rounded font-bold shadow-lg"
     :class="[ui.error ? 'bg-red-200 border-red-600' : 'bg-green-200 border-green-600']"
   >
     <h3

@@ -9,6 +9,7 @@
       <h1 class="text-lg text-gray-700">No hay libros registrados de momento</h1>
     </div>
     <div v-else class="dev bg-white p-3 rounded-2xl shadow-2xl">
+      <BookSearch />
       <vs-table striped>
         <template #thead>
           <vs-tr>
@@ -36,10 +37,15 @@
 </template>
 
 <script>
+import BookSearch from '@/components/books/BookSearch'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'BooksList',
+
+  components: {
+    BookSearch
+  },
 
   created () {
     this.submit()
